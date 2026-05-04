@@ -1,0 +1,14 @@
+---
+- name: Check 
+  hosts: all_switches
+  gather_facts: no
+  tasks:
+    - name: interface info
+      cisco.ios.ios_vlans:
+        config:
+        state: gathered
+      register: current_config
+
+    - name: show
+      debug:
+        msg: "{{ current_config }}"

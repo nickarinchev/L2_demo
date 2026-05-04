@@ -1,0 +1,45 @@
+---
+- name: Config C9300
+  hosts: Branch-SW1
+  gather_facts: false
+  tasks:
+    - name: Set Hostname
+      cisco.ios.ios_hostname:
+        config:
+          hostname: "{{ inventory_hostname }}"
+        state: merged
+      when: true
+ 
+    - name: Create Vlans
+      cisco.ios.ios_vlans:
+        config: "{{ vlans }}"
+        state: merged
+    
+    - name: Set up interfaces
+      cisco.ios.ios_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            description: "{{ item.description }}"
+            enabled: "{{ item.enabled }}"
+      loop: "{{ interfaces }}"
+      when: false
+
+    - name: Config interfaces
+      cisco.ios.ios_l2_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            mode: "{{ item.mode | default('access') }}"
+            access:
+              vlan: "{{ item.vlan_id | default(omit) }}"
+            voice:
+              vlan: "{{ item.voice_vlan | default(omit) }}"
+            trunk:
+              allowed_vlans: "{{ item.allowed_vlans | default(omit) }}"
+              native_vlan: "{{ item.native_vlan | default(omit) }}"
+            spanning_tree:
+              portfast: 
+                disabled: false
+              bpduguard:
+                disabled:
+      loop: "{{ interfaces }}"
+      when: item.enabled == true

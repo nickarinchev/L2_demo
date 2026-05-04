@@ -1,0 +1,13 @@
+ansible-navigator:
+  playbook-artifact:
+    enable: false
+  mode: stdout
+  ansible-navigator:
+  execution-environment:
+    volume-mounts:
+      - src: "./collections"
+        dest: "/usr/share/ansible/collections"
+        options: "Z"
+  ansible:
+    config: "./ansible.cfg"
+

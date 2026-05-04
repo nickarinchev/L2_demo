@@ -1,0 +1,122 @@
+---
+# VLAN Definitions
+vlans:
+  - vlan_id: 10
+    name: Staff
+  - vlan_id: 20
+    name: Voice
+  - vlan_id: 100
+    name: Mngmnt
+  - vlan_id: 5
+    name: Blackhole
+
+# Interface Configuration
+interfaces:
+  - name: GigabitEthernet1/0/1
+    description: Data
+    enabled: true
+    mode: access
+    access_vlan: 10
+    voice_vlan: 20
+    portfast: true
+    bpduguard: true
+
+  - name: GigabitEthernet1/0/2
+    description: Voice
+    enabled: true
+    mode: access
+    access_vlan: 10
+    voice_vlan: 20
+    portfast: true
+    bpduguard: true
+
+  - name: GigabitEthernet1/0/3
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/4
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/5
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/6
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/7
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/8
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/9
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/10
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/11
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/12
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/13
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/14
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/15
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/16
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/17
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/18
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/19
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/20
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/21
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/22
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/23
+    description: DISABLED
+    enabled: false
+
+  - name: GigabitEthernet1/0/24
+    description: Data
+    enabled: true
+    mode: trunk
+    trunk_allowed_vlans: "10,20,100"
+    native_vlan: 100

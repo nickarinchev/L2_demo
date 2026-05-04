@@ -1,0 +1,16 @@
+[Route_reflector]
+R2 ansible_host=10.0.0.102
+
+[spokes]
+R1 ansible_host=10.0.0.101
+R3 ansible_host=10.0.0.103
+
+[all_routers:children]
+Route_reflector
+spokes
+
+[Switches]
+Branch-SW1 ansible_host=10.0.0.104
+
+[all_switches:children]
+Switches
